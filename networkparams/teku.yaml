@@ -1,8 +1,8 @@
 participants:
-  - el_type: nethermind
+  - el_type: geth
     cl_type: teku
-    cl_image: "tscel/bf-teku-v24.12.1:latest"
-    vc_image: "tscel/bf-teku-v24.12.1:latest"
+    cl_image: "local/teku:develop"
+    vc_image: "local/teku:develop"
     validator_count: 86
     count: 1
     cl_extra_env_vars: {"ATTACKER_SERVICE_URL":"http://bunnyfinder:19000"}
@@ -12,7 +12,7 @@ participants:
     cl_type: lighthouse
     validator_count: 85
 
-  - el_type: nethermind
+  - el_type: geth
     cl_type: teku
     validator_count: 85
 
@@ -27,8 +27,9 @@ additional_services:
   - bunnyfinder
 
 bunnyfinder_params:
-  image: 'tscel/bf-test:latest'
-  strategy: 'random'
-  dbconnect: 'eth:12345678@tcp(172.17.0.1:3306)/eth'
+  #image: 'tscel/bf-test:latest'
+  image: 'tscel/bunnyfinder:latest'
+  strategy: 'exante'
+  dbconnect: 'eth:12345678@tcp(172.17.0.1:13306)/eth'
   max_malicious_idx: "85"
   duration_per_strategy: "30"
